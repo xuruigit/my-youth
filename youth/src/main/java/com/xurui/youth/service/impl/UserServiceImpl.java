@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * 用户服务实现
  * Created by XuRui on 2018/4/9.
  */
-@Service(interfaceClass = UserService.class)
+@Service
 @Component
 public class UserServiceImpl implements UserService {
 
