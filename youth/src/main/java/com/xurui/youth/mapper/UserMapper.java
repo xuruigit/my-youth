@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(User record);
+    long insert(User record);
 
     int insertSelective(User record);
 

@@ -24,4 +24,10 @@ public class UserServiceTest {
         UserDTO userDTO = userService.get(1L);
         System.err.println(userDTO.getName());
     }
+
+    @Test
+    public void testTransaction(){
+        UserDTO userDTO = userService.get(1L);
+        userService.add(userDTO);
+    }
 }

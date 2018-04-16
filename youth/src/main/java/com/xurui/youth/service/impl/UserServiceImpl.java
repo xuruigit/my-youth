@@ -8,6 +8,7 @@ import com.xurui.youth.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 用户服务实现
@@ -35,4 +36,24 @@ public class UserServiceImpl implements UserService {
         BeanUtils.copyProperties(user, userDTO);
         return userDTO;
     }
+
+    /**
+     * 新增用户
+     *
+     * @param userDTO 用户信息
+     * @return userDTO
+     */
+    @Override
+    @Transactional
+    public UserDTO add(UserDTO userDTO) {
+        User user = new User();
+        BeanUtils.copyProperties(userDTO, user);
+        long id = userMapper.insert(user);
+        userDTO.setId(id);
+//        throw new RuntimeException();
+//        userMapper.insert(null);
+        return userDTO;
+    }
+
+
 }
