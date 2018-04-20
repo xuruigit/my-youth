@@ -25,6 +25,6 @@ public class ExceptionHandle {
             message = e.getMessage();
         }
         log.warn(message, e);
-        return Response.fail(message);
+        return Response.failOfMessage(message);
     }
 }
