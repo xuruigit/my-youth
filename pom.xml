@@ -14,6 +14,8 @@
     <modules>
         <module>youth</module>
         <module>youth-api</module>
+        <module>youth-cloud-config</module>
+        <module>youth-cloud-eureka</module>
         <module>youth-common</module>
         <module>youth-web</module>
     </modules>
