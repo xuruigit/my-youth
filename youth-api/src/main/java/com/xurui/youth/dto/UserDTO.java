@@ -2,6 +2,8 @@ package com.xurui.youth.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -22,16 +24,19 @@ public class UserDTO implements Serializable{
     /**
      * 账户
      **/
+    @NotNull
     private String account;
 
     /**
      * 名称
      **/
+    @NotNull
     private String name;
 
     /**
      * 密码
      **/
+    @Pattern(regexp = "/((\\%3D)|(=))[^\\n]*((\\%27)|(\\’)|(\\-\\-)|(\\%3B)|(:))/i")
     private String password;
 
     /**

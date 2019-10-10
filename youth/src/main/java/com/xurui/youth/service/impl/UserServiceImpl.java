@@ -1,20 +1,25 @@
 package com.xurui.youth.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.xurui.youth.condition.UserCondition;
 import com.xurui.youth.dto.UserDTO;
 import com.xurui.youth.entity.User;
 import com.xurui.youth.mapper.UserMapper;
 import com.xurui.youth.service.UserService;
+import com.xurui.youth.util.ConvertUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * 用户服务实现
- * Created by XuRui on 2018/4/9.
+ *
+ * @author XuRui
+ * @date 2018/4/9
  */
-@Service
+@Service(interfaceClass = UserService.class)
 @Component
 public class UserServiceImpl implements UserService {
 
@@ -38,22 +43,30 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * 查询用户列表
+     *
+     * @param condition 查询条件
+     * @return 用户列表
+     */
+    @Override
+    public List<UserDTO> list(UserCondition condition) {
+        List<User> list = userMapper.list(condition);
+        return ConvertUtil.converts(list, UserDTO.class);
+    }
+
+    /**
      * 新增用户
      *
      * @param userDTO 用户信息
      * @return userDTO
      */
     @Override
-    @Transactional
     public UserDTO add(UserDTO userDTO) {
         User user = new User();
         BeanUtils.copyProperties(userDTO, user);
         long id = userMapper.insert(user);
         userDTO.setId(id);
-//        throw new RuntimeException();
-//        userMapper.insert(null);
         return userDTO;
     }
-
 
 }
