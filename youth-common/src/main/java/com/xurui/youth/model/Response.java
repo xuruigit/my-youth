@@ -7,7 +7,9 @@ import java.io.Serializable;
 
 /**
  * 返回值统一包装类
- * Created by XuRui on 2018/4/19.
+ *
+ * @author XuRui
+ * @date 2018/4/19
  */
 @Data
 @ToString

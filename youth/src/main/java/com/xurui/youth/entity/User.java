@@ -7,7 +7,9 @@ import java.util.Date;
 
 /**
  * 用户表
- * Created by XuRui on 2018/4/13.
+ *
+ * @author XuRui
+ * @date 2018/4/13
  */
 @Data
 public class User implements Serializable {
